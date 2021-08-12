@@ -29,6 +29,14 @@ if ($Script:ValueProcessEP -eq 0) {
 
 
 
+
+#Region Start Azure VM
+# ===========================================================================
+# Import Module for AWS PowerShell
+Import-Module -Name Az
+
+
+
 #Region assign variables
 # ===========================================================================
 # Save accesskey to this Variable
@@ -58,11 +66,6 @@ Connect-AzAccount -Credential $Script:UserCredential
 #Regoin for Connection to Azure 
 
 
-
-#Region Start Azure VM
-# ===========================================================================
-# Import Module for AWS PowerShell
-Import-Module -Name Az
 
 # Loop through the hash table for the Names of the VM
 foreach ($item in $Script:AzureVmNames) {
