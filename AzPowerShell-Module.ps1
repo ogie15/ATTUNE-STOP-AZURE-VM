@@ -9,7 +9,7 @@ $Script:ValueProcessEP = ($Script:ProcessEP).value__
 # Check if the Execution Policy of the process is set to Unrestricted
 if ($Script:ValueProcessEP -eq 0) {
 
-    # echo the message
+    # Writes a message to screen
     Write-Output "Execution Policy is already set to Unrestricted for the Process"
 # Check if the Execution Policy of the process is already set
 }else{
@@ -20,7 +20,7 @@ if ($Script:ValueProcessEP -eq 0) {
     # Checks if the Execution Policy has been set
     if ((Get-ExecutionPolicy -Scope Process).value__ -eq 0) {
 
-        # echo the message
+        # Writes a message to screen
         Write-Output "Execution Policy is now set to Unrestricted for the Process"
     }
 }
@@ -37,7 +37,7 @@ if($null -ne (Get-InstalledModule -Name Az -ErrorVariable +ErrorAzV -ErrorAction
     # Get the  Az module installed and save it in a variable
     $Script:GetAzModule = Get-InstalledModule -Name Az -ErrorVariable +ErrorAzV -ErrorAction SilentlyContinue
 
-    # echo the message
+    # Writes a message to screen
     Write-Output "Az PowerShell Module exists ... checking ..."
 
     # Gets the build number for the  Az Module 
@@ -49,19 +49,19 @@ if($null -ne (Get-InstalledModule -Name Az -ErrorVariable +ErrorAzV -ErrorAction
         # Saves and converts Module version name to a variable
         $Script:OutVersion = ((($Script:GetAzModule).Version)).tostring()
 
-        # echo the message
+        # Writes a message to screen
         Write-Output "Az Module Version $Script:OutVersion meets the minimum requirement."
 
     # Check if the build version is on 13
     }else{
 
-        # echo the message
+        # Writes a message to screen
         Write-Output "Updating the Az PowerShell Module..."
 
         # Uppdates the  AzPowerShell Module to the latest version
         Update-Module -Name Az -Confirm:$false -Force 
 
-        # echo the message
+        # Writes a message to screen
         Write-Output "Az PowerShell Module is updated :)"
     }
 #EndRegion if the module is installed, update module if the version is not up to Version "4.1.13.0"
@@ -69,16 +69,16 @@ if($null -ne (Get-InstalledModule -Name Az -ErrorVariable +ErrorAzV -ErrorAction
 #Region If the module is not installed, install it 
 }else{
 
-    # echo the message
+    # Writes a message to screen
     Write-Output "Az PowerShell Module is not installed"
     
-    # echo the message
+    # Writes a message to screen
     Write-Output "Az PowerShell Module is installing..."
 
     # Install Az Powershell Module 
     Install-Module -Name Az -MaximumVersion "6.3.0" -Scope "CurrentUser" -AllowClobber:$true -Confirm:$false -Force
 
-    # echo the message
+    # Writes a message to screen
     Write-Output "Az PowerShell Module is installed :)"
 }
 #EndRegion If the module is not installed, install it
