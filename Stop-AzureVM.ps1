@@ -30,9 +30,9 @@ if ($Script:ValueProcessEP -eq 0) {
 
 
 
-#Region Start Azure VM
+#Region Stop Azure VM
 # ===========================================================================
-# Import Module for AWS PowerShell
+# Import Module for Az PowerShell
 Import-Module -Name Az
 
 
@@ -74,13 +74,13 @@ foreach ($item in $Script:AzureVmNames) {
     $Script:AzVm = Get-AzVM -VMName ($item)
 
     # Write the message
-    Write-Output "The Azure VM '$($item)' in is starting....."
+    Write-Output "The Azure VM '$($item)' in is stoping....."
 
     # Stop the Azure VM
     Stop-AzVM -ResourceGroupName $Script:AzVm.ResourceGroupName -Name $Script:AzVm.Name -NoWait -Confirm:$false -Force
 }
 # ===========================================================================
-#EndRegion Start Azure VM
+#EndRegion stop Azure VM
 
 
 
