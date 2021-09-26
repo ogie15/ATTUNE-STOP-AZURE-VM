@@ -28,4 +28,4 @@ They provide on-demand and scalable computing resources with usage-based pricing
 ## Blueprint Steps
 
 1. Check and Install the Azure AzPowerShell Module
-1. Shutdown the Azure Virtual Machine(s)
+1. Shuts down the Azure Virtual Machine(s)
