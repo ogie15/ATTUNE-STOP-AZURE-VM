@@ -1,5 +1,4 @@
 #Region for ExecutionPolicy
-# ===========================================================================
 # Get Execution Policy of the current process
 $Script:ProcessEP = Get-ExecutionPolicy -Scope Process
 
@@ -24,21 +23,14 @@ if ($Script:ValueProcessEP -eq 0) {
         Write-Output "Execution Policy is now set to Unrestricted for the Process"
     }
 }
-# ===========================================================================
 #EndRegion for ExecutionPolicy 
 
 
-
-
 #Region Stop Azure VM
-# ===========================================================================
 # Import Module for Az PowerShell
 Import-Module -Name Az
 
-
-
 #Region assign variables
-# ===========================================================================
 # Save accesskey to this Variable
 $Script:UserName = "{azureusername.value}"
 
@@ -47,13 +39,9 @@ $Script:PasswordString = "{azurepassword.value}"
 
 # List of VM names
 $Script:AzureVmNames = {azurevmnames.value}
-# ===========================================================================
 #EndRegion assign variables
 
-
-
 #Regoin for Connection to Azure 
-# ===========================================================================
 # Set the password and convert it to secure string to the variable
 $Script:Password = ConvertTo-SecureString $Script:PasswordString -AsPlainText -Force
 
@@ -62,10 +50,7 @@ $Script:UserCredential = New-Object System.Management.Automation.PSCredential ($
 
 # Connect using set credentials to Azure
 Connect-AzAccount -Credential $Script:UserCredential
-# ===========================================================================
 #Regoin for Connection to Azure 
-
-
 
 # Loop through the hash table for the Names of the VM
 foreach ($item in $Script:AzureVmNames) {
@@ -79,10 +64,7 @@ foreach ($item in $Script:AzureVmNames) {
     # Stop the Azure VM
     Stop-AzVM -ResourceGroupName $Script:AzVm.ResourceGroupName -Name $Script:AzVm.Name -NoWait -Confirm:$false -Force
 }
-# ===========================================================================
 #EndRegion stop Azure VM
-
-
 
 #Region Disconnect the Azure session
 Disconnect-AzAccount
