@@ -41,7 +41,7 @@ $Script:PasswordString = "{azurepassword.value}"
 $Script:AzureVmNames = {azurevmnames.value}
 #EndRegion assign variables
 
-#Regoin for Connection to Azure 
+#Region for Connection to Azure 
 # Set the password and convert it to secure string to the variable
 $Script:Password = ConvertTo-SecureString $Script:PasswordString -AsPlainText -Force
 
@@ -50,7 +50,7 @@ $Script:UserCredential = New-Object System.Management.Automation.PSCredential ($
 
 # Connect using set credentials to Azure
 Connect-AzAccount -Credential $Script:UserCredential
-#Regoin for Connection to Azure 
+#EndRegion for Connection to Azure 
 
 # Loop through the hash table for the Names of the VM
 foreach ($item in $Script:AzureVmNames) {
